@@ -1,0 +1,97 @@
+<?php 
+    session_start();
+    require("./model/config/commandes.php");
+    
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "./vue/styles/style_authentification.css"/>
+        <title><?=  $_SESSION['systeme'] ?></title>
+    </head>
+    <body>
+        <?php 
+            include("menu.php");
+        ?>
+
+        <section class="authentification" id="authentification">
+
+            <?php 
+                if(isset($_POST['bt_recherche'])){
+
+                    header('Location:http://localhost/KIVU_SHOW/index.php');
+                    exit;                            
+                }
+            ?>
+
+            <div class="contenu">
+
+                <!-- <div class="precedant">
+                    <div>
+                        <img class="logo" src="./img/logo.png" alt="logo">
+                    </div>
+                    <h3>KIVU SHOW</h3>
+                </div> -->
+
+                <div class="contenu_second">
+                    <h3>Connexion</h3>
+
+                    <form action="./controler/actions/authentification.php" method="POST">
+
+                        <div class="element">
+                            <div class="image">
+                                <img class="logo" src="./img/email.png" alt="logo">
+                            </div>
+                            <div class="inputboite">
+                                <input type="email" name="email" class="form-control" placeholder="Adresse e-mail  ">
+                            </div>
+                        </div>
+
+                        <div class="element">
+                            <div class="image">
+                                <img class="logo" src="./img/utilisateur.png" alt="logo">
+                            </div>
+                            <div class="inputboite">
+                                <select name="utilisateur" id="utilisateur">
+                                    <option value="spectateur">Spectateur</option>
+                                    <option value="acteur">Acteur</option>
+                                    <option value="gerant">Gérant spectacle</option>
+                                    <option value="admin">Administrateur systeme</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="element">
+                            <div class="image">
+                                <img class="logo" src="./img/password.png" alt="logo">
+                            </div>
+                            <div class="inputboite">
+                                <input type="password" name="password" class="form-control" placeholder="Mot de passe ">
+                            </div>
+                        </div>
+
+                        <div class="bas">
+                            <div class="inputboite">
+                                <input type="submit" name="bt_suivant" value="Se connecter">
+                            </div>
+                            <p class="parag_secondaire">
+                                vous n'avez pas de compte ?<a href="inscription.php"> Inscription </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+        <?php 
+            include("copyright.php");
+        ?>        
+
+        <script src="./vue/js/index.js"></script>
+    </body>
+</html>
